@@ -1,6 +1,6 @@
 <?php
 
-class Character extends CI_Model
+class Character
 {
 	/**
      * Constructor
@@ -8,17 +8,29 @@ class Character extends CI_Model
      * @return Response
     */
 
-	protected $nome      = "";
+	public $nome      = "";
 	
-	protected $vida      = 0;
+	public $vida      = 0;
 	
-	protected $forca     = 0;
+	public $forca     = 0;
 	
-	protected $agilidade = 0;
+	public $agilidade = 0;
 
-	protected $armas 	 = array();
+	public $armas 	 = array();
 
-	protected $imagem 	 = "";
+	public $imagem 	 = "";
+
+    public function __construct($nome = "", $config = array())
+    {
+        $this->setNome($nome);
+        $this->setVida($config['hp']);
+        $this->setForca($config['forca']);
+        $this->setAgilidade($config['agilidade']);
+        $this->setArmas($config['arma']);
+        $this->setImagem($config['imagem']);
+
+        return $this;
+    }
 
 	/**
 	 * Carrega as caracteristicas do personagem
@@ -26,40 +38,33 @@ class Character extends CI_Model
 	 * @param @array
 	 * @return this
 	 */ 
-    public function loadChar($nome = "", $config = array() ) 
+    public function initialize($nome = "", $config = array() ) 
     {
     	
-    	$this->setNome($nome);
-    	$this->setVida($config['hp']);
-    	$this->setForca($config['forca']);
-    	$this->setAgilidade($config['agilidade']);
-    	$this->setArmas($config['arma']);
-    	$this->setImagem($config['imagem']);
-
-    	return $this;
+    	
     }
 
-    protected function setNome($nome)
+    public function setNome($nome)
     {
     	$this->nome = $nome;
     } 
 
-    protected function setVida($vida)
+    public function setVida($vida)
     {
     	$this->vida = $vida;
     }
 
-    protected function setForca($forca)
+    public function setForca($forca)
     {
     	$this->forca = $forca;
     }
 
-    protected function setAgilidade($agilidade)
+    public function setAgilidade($agilidade)
     {
     	$this->agilidade = $agilidade;
     }
 
-    protected function setArmas($armas)
+    public function setArmas($armas)
     {
     	$this->armas = $armas;
     } 
