@@ -5,15 +5,19 @@ Utilizado framework codeigniter para desenvolver projeto
 
 Implementada api rest e o cliente no framework.
 
-
 Para utilizar : 
 
-Clonar o repositório para ser servidor web local
+**Clonar o repositório para ser servidor web local**
 
-Abrir o arquivo application/config/config.php
+> git clone https://github.com/EdmoAlef/rpg.git
 
-Alterar $config['base_url']  conforme a configuração local.
+**_Se necessário abrir o arquivo application/config/config.php para definir o nome do repositório local_**
 
-Para alterar as configurações dos personagens 
+>*Alterar $config['base_url']  conforme a configuração local.*
 
-Abrir o arquivo application/json/dados.json
+**_Para alterar as configurações dos personagens_**
+
+>Abrir o arquivo application/json/dados.json
+
+**_Após clonar o projeto e verificar a configuração Carregar o sistema local_**
+>exemplo : http://localhost/rpg/
