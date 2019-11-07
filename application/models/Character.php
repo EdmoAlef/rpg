@@ -32,18 +32,6 @@ class Character
         return $this;
     }
 
-	/**
-	 * Carrega as caracteristicas do personagem
-	 * @param @text
-	 * @param @array
-	 * @return this
-	 */ 
-    public function initialize($nome = "", $config = array() ) 
-    {
-    	
-    	
-    }
-
     public function setNome($nome)
     {
     	$this->nome = $nome;
