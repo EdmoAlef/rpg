@@ -1,11 +1,12 @@
 {
 	
 	"personagens" :{
+		
 		"Humano" :{
 			"hp" 		: "12",
 			"forca" 	: "1",
 			"agilidade" : "2",
-			"imagem"  	: "humano.jpg",
+			"imagem"  	: "humano.png",
 			"arma" : {
 				"nome" : "espada longa",
 				"ataque" : "2",
@@ -13,11 +14,12 @@
 				"dado"   : "6"
 			}
 		},
+
 		"Orc" : {
 			"hp" 		: "20",
 			"forca" 	: "2",
 			"agilidade" : "0",
-			"imagem"  	: "orc.jpg",
+			"imagem"  	: "orc.png",
 			"arma" : {
 				"nome" : "clava de madeira",
 				"ataque" : "1",
