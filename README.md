@@ -9,7 +9,7 @@ Para utilizar :
 
 **Clonar o repositório para ser servidor web local**
 
-> git clone https://github.com/EdmoAlef/rpg.git
+> git clone https://github.com/EdmoAlef/rpg.git ou baixar o projeto e enviar para seu servidor local
 
 **_Se necessário abrir o arquivo application/config/config.php para definir o nome do repositório local_**
 
