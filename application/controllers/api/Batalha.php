@@ -109,12 +109,12 @@ class Batalha extends REST_Controller {
                 $this->doReadPhase("<b>[".$charOne->getNome()."]</b> Jogou dado de 20 faces ");
                 $charOneRandom  = $this->doRoll(20);
                 $charOneStepOne = ((int)$charOne->getAgilidade() + $charOneRandom);
-                $this->doReadPhase("<b>[".$charOne->getNome()."]</b> O dado de 20 retornou {$charOneRandom}, somado a agilidade de ".$charOne->getAgilidade()." tota de ".$charOneStepOne);
+                $this->doReadPhase("<b>[".$charOne->getNome()."]</b> O dado de 20 retornou {$charOneRandom}, somado a agilidade de ".$charOne->getAgilidade()." total de ".$charOneStepOne);
                 
                 $this->doReadPhase("<b>[".$charTwo->getNome()."]</b> Jogou dado de 20 faces ");
                 $charTwoRandom  = $this->doRoll(20);
                 $charTwoStepOne = ((int)$charTwo->getAgilidade() + $charOneRandom);
-                $this->doReadPhase("<b>[".$charTwo->getNome()."]</b> O dado de 20 retornou {$charTwoRandom}, somado a agilidade de ".$charTwo->getAgilidade()." tota de ".$charTwoStepOne);
+                $this->doReadPhase("<b>[".$charTwo->getNome()."]</b> O dado de 20 retornou {$charTwoRandom}, somado a agilidade de ".$charTwo->getAgilidade()." total de ".$charTwoStepOne);
                 
                 if( $charOneStepOne == $charTwoStepOne ){
 
@@ -182,7 +182,7 @@ class Batalha extends REST_Controller {
             
              $this->doReadPhase("<b>Inicio rodada {$rodada}.<b>");
              $this->doReadPhase("<b>".$this->attacker->getNome()."</b> possui ".$this->attacker->getVida()." pontos de vida.");
-             $this->doReadPhase("<b>".$this->defender->getNome()."</b> possui ".$this->defender->getVida()." pontos de vida. </b>");
+             $this->doReadPhase("<b>".$this->defender->getNome()."</b> possui ".$this->defender->getVida()." pontos de vida.");
 
             /** 
              * Calcula ataque personagem
