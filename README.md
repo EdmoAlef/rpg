@@ -17,5 +17,5 @@ Para utilizar :
 
 >Abrir o arquivo application/json/dados.json
 
->Após clonar o projeto e verificar a configuração Carregar o sistema local, exemplo : 
-http://localhost/rpg/
+**_Após clonar o projeto e verificar a configuração Carregar o sistema local_**
+>exemplo : http://localhost/rpg/
