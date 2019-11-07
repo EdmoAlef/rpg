@@ -38,6 +38,7 @@ class Batalha extends REST_Controller {
         return $this->characters;
         
     }
+
     /**
      * Método da api para carregar personagens do jogo
      */
@@ -101,19 +102,19 @@ class Batalha extends REST_Controller {
     {
         if($isFirstTurn){
 
-            $this->doReadPhase("Rodada Iniciou o combate entre o ".$charOne->getNome(). " e ".$charTwo->getNome() );
+            $this->doReadPhase("<b>Rodada Iniciou o combate entre o ".$charOne->getNome(). " e ".$charTwo->getNome()."</b>");
             
             while ($isFirstTurn){
 
-                $this->doReadPhase("Personagem [".$charOne->getNome()."] jogou dado de 20 faces ");
+                $this->doReadPhase("<b>[".$charOne->getNome()."]</b> Jogou dado de 20 faces ");
                 $charOneRandom  = $this->doRoll(20);
                 $charOneStepOne = ((int)$charOne->getAgilidade() + $charOneRandom);
-                $this->doReadPhase("Personagem [".$charOne->getNome()."] O dado de 20 retornou {$charOneRandom}, somado a agilidade de ".$charOne->getAgilidade()." tota de ".$charOneStepOne);
+                $this->doReadPhase("<b>[".$charOne->getNome()."]</b> O dado de 20 retornou {$charOneRandom}, somado a agilidade de ".$charOne->getAgilidade()." tota de ".$charOneStepOne);
                 
-                $this->doReadPhase("Personagem [".$charTwo->getNome()."] jogou dado de 20 faces ");
+                $this->doReadPhase("<b>[".$charTwo->getNome()."]</b> Jogou dado de 20 faces ");
                 $charTwoRandom  = $this->doRoll(20);
                 $charTwoStepOne = ((int)$charTwo->getAgilidade() + $charOneRandom);
-                $this->doReadPhase("Personagem [".$charTwo->getNome()."] O dado de 20 retornou {$charTwoRandom}, somado a agilidade de ".$charTwo->getAgilidade()." tota de ".$charTwoStepOne);
+                $this->doReadPhase("<b>[".$charTwo->getNome()."]</b> O dado de 20 retornou {$charTwoRandom}, somado a agilidade de ".$charTwo->getAgilidade()." tota de ".$charTwoStepOne);
                 
                 if( $charOneStepOne == $charTwoStepOne ){
 
@@ -121,7 +122,7 @@ class Batalha extends REST_Controller {
 
                 }elseif( $charOneStepOne > $charTwoStepOne){
                     
-                    $this->doReadPhase("Personagem [".$charOne->getNome()."] : Vencedor, iniciará o ataque.");
+                    $this->doReadPhase("<b>[".$charOne->getNome()."]</b> : Vencedor, iniciará o ataque.");
                     $this->setAttacker($charOne);
                     $this->setDefender($charTwo);
 
@@ -129,7 +130,7 @@ class Batalha extends REST_Controller {
 
                 }elseif ($charTwoStepOne > $charOneStepOne ) {
                     
-                    $this->doReadPhase("Personagem [".$charTwo->getNome()."] : Vencedor, iniciará o ataque.");
+                    $this->doReadPhase("<b>[".$charTwo->getNome()."]</b> : Vencedor, iniciará o ataque.");
                     $this->setAttacker($charTwo);
                     $this->setDefender($charOne);
 
@@ -179,9 +180,9 @@ class Batalha extends REST_Controller {
 
         while ($isInBattle) {
             
-             $this->doReadPhase("Inicio rodada {$rodada}.");
-             $this->doReadPhase(" Personagem ".$this->attacker->getNome()." possui ".$this->attacker->getVida()." pontos de vida.");
-             $this->doReadPhase(" Personagem ".$this->defender->getNome()." possui ".$this->defender->getVida()." pontos de vida.");
+             $this->doReadPhase("<b>Inicio rodada {$rodada}.<b>");
+             $this->doReadPhase("<b>".$this->attacker->getNome()."</b> possui ".$this->attacker->getVida()." pontos de vida.");
+             $this->doReadPhase("<b>".$this->defender->getNome()."</b> possui ".$this->defender->getVida()." pontos de vida. </b>");
 
             /** 
              * Calcula ataque personagem
@@ -191,9 +192,9 @@ class Batalha extends REST_Controller {
             $battleAttackerWeapon  = (int)$this->attacker->getArmas()['ataque'];
             $battleAttackerAux     = $battleAttackerRandom + $battleAttackerAgility + $battleAttackerWeapon;
             
-            $this->doReadPhase("Personagem [".$this->attacker->getNome()."] iniciou o ataque.");
-            $this->doReadPhase("Personagem [".$this->attacker->getNome()."] jogou o dado de 20 faces e retornou : {$battleAttackerRandom}.");
-            $this->doReadPhase("Personagem [".$this->attacker->getNome()."] atacou.");
+            $this->doReadPhase("<b>[".$this->attacker->getNome()."]</b> Iniciou o ataque.");
+            $this->doReadPhase("<b>[".$this->attacker->getNome()."]</b> Jogou o dado de 20 faces e retornou : {$battleAttackerRandom}.");
+            $this->doReadPhase("<b>[".$this->attacker->getNome()."]</b> Atacou.");
             
             /** 
              * Calcula defesa personagem
@@ -203,17 +204,17 @@ class Batalha extends REST_Controller {
             $battleDefenderWeapon  = (int)$this->defender->getArmas()['defesa'];
             $battleDefenderAux     = $battleDefenderRandom + $battleDefenderAgility + $battleDefenderWeapon;
 
-            $this->doReadPhase("Personagem [".$this->defender->getNome()."] irá tentar a defesa.");
-            $this->doReadPhase("Personagem [".$this->defender->getNome()."] jogou o dado de 20 faces e retornou : {$battleDefenderRandom}.");
+            $this->doReadPhase("<b>[".$this->defender->getNome()."]</b> Irá tentar a defesa.");
+            $this->doReadPhase("<b>[".$this->defender->getNome()."]</b> Jogou o dado de 20 faces e retornou : {$battleDefenderRandom}.");
 
             /**
              * Valida calculo do ataque / defesa
              */
             if($battleAttackerAux > $battleDefenderAux){
-                $this->doReadPhase("Personagem [".$this->defender->getNome()."] não conseguiu se esquivar e receberá o dano.");
+                $this->doReadPhase("<b>[".$this->defender->getNome()."]</b> Não conseguiu se esquivar e receberá o dano.");
                 $this->doDamage();
             }else{
-                $this->doReadPhase("Personagem [".$this->defender->getNome()."] se esquivou do ataque.");
+                $this->doReadPhase("<b>[".$this->defender->getNome()."]</b> Se esquivou do ataque.");
             }
 
             $isInBattle = $this->getCriticalLife();
@@ -240,12 +241,12 @@ class Batalha extends REST_Controller {
     public function getCriticalLife(){
         
         if($this->defender->getVida() <= 0){
-            $this->doReadPhase("Personagem ".$this->defender->getNome()." foi derrotado. Vencedor : ".$this->attacker->getNome());
+            $this->doReadPhase("Personagem ".$this->defender->getNome()." Foi derrotado. <b>Vencedor : ".$this->attacker->getNome()."</b>");
             return false;
         }
 
         if($this->attacker->getVida() <= 0){
-            $this->doReadPhase("Personagem ".$this->attacker->getNome()." foi derrotado. Vencedor : ".$this->defender->getNome());
+            $this->doReadPhase("Personagem ".$this->attacker->getNome()." Foi derrotado. <b>Vencedor : ".$this->defender->getNome()."</b>");
             return false;
         }
 
@@ -277,13 +278,13 @@ class Batalha extends REST_Controller {
         $weaponRandom = $this->doRoll((int)$weapon['dado']);
         $weaponAux    = $weaponAttack + $weaponRandom;
 
-        $this->doReadPhase("Personagem [".$this->attacker->getNome()."]  jogou o dado de ".(int)$weapon['dado']." da arma ".$weapon['nome']." e retornou ".$weaponRandom);
-        $this->doReadPhase("Personagem [".$this->attacker->getNome()."]  ataque calculado foi de {$weaponAux} pontos");
+        $this->doReadPhase("<b>[".$this->attacker->getNome()."]</b>  Jogou o dado de ".(int)$weapon['dado']." da arma ".$weapon['nome']." e retornou ".$weaponRandom);
+        $this->doReadPhase("<b>[".$this->attacker->getNome()."]</b>  Ataque calculado foi de {$weaponAux} pontos");
 
         /**
          * Calcula a vida do defensor
          */
-        $this->doReadPhase("Personagem [".$this->defender->getNome()."]  sofreu dano de {$weaponAux} pontos");
+        $this->doReadPhase("<b>[".$this->defender->getNome()."]</b>  Sofreu dano de {$weaponAux} pontos");
 
         $lifeDefender = $this->defender->getVida();
         $this->defender->setVida( $lifeDefender - $weaponAux );

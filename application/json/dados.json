@@ -1,6 +1,7 @@
 {
 	
 	"personagens" :{
+		
 		"Humano" :{
 			"hp" 		: "12",
 			"forca" 	: "1",
@@ -13,6 +14,7 @@
 				"dado"   : "6"
 			}
 		},
+
 		"Orc" : {
 			"hp" 		: "20",
 			"forca" 	: "2",
